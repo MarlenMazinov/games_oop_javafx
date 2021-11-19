@@ -7,20 +7,25 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.black.BishopBlack;
 
-public class LogicTest extends TestCase {
-
+public class LogicTest {
+    
     @Test
     public void whenReturnIndex()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        logic.add(new BishopBlack(Cell.C1));
-        logic.move(Cell.C1, Cell.H6);
+        Figure bishopBlack = new BishopBlack(Cell.C1);
+        logic.add(bishopBlack);
         int actual = 0;
         int expected = logic.getIndex();
         assertEquals(actual, expected);
     }
 
-    @Test (expected = FigureNotFoundException.class)
+    private void assertEquals(Cell[] actual, Cell[] expected) {
+    }
+    private void assertEquals(int actual, int expected) {
+    }
+
+    @Test(expected = FigureNotFoundException.class)
     public void whenFigureNotFound()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
@@ -32,7 +37,7 @@ public class LogicTest extends TestCase {
     public void whenCountCells()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        BishopBlack bishopBlack = new BishopBlack(Cell.C1);
+        Figure bishopBlack = new BishopBlack(Cell.C1);
         logic.add(bishopBlack);
         logic.move(Cell.C1, Cell.E3);
         Cell[] expected = logic.getFigures()[logic.getIndex()].way(Cell.E3);

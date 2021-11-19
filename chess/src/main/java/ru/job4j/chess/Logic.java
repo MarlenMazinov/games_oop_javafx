@@ -12,6 +12,9 @@ public final class Logic {
     public void add(Figure figure) {
         figures[index++] = figure;
     }
+    public Figure meth() {
+        return figures[0];
+    }
 
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
@@ -22,9 +25,9 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        for (int i = 0; i < figures.length; i++) {
-            for (int j = 0; j < steps.length; j++) {
-                if (figures[i].position().equals(steps[j])) {
+        for (Figure figure : figures) {
+            for (Cell cell : steps) {
+                if (figure.position().equals(cell)) {
                     throw new OccupiedCellException();
                 }
             }

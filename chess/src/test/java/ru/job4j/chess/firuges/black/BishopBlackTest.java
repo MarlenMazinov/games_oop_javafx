@@ -5,7 +5,7 @@ import org.junit.Test;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
-public class BishopBlackTest extends TestCase {
+public class BishopBlackTest {
 
     @Test
     public void whenInitialCellIsTrue() {
@@ -37,5 +37,14 @@ public class BishopBlackTest extends TestCase {
     public void whenImpossibleMove() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
         bishopBlack.way(Cell.C4);
+    }
+
+    private void assertEquals(Cell expected, Cell actual) {
+    }
+
+    private void assertEquals(Figure expected, Figure actual) {
+    }
+
+    private void assertEquals(Cell[] expected, Cell[] actual) {
     }
 }
