@@ -8,7 +8,7 @@ import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.black.BishopBlack;
 
 public class LogicTest {
-    
+
     @Test
     public void whenReturnIndex()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
@@ -18,11 +18,6 @@ public class LogicTest {
         int actual = 0;
         int expected = logic.getIndex();
         assertEquals(actual, expected);
-    }
-
-    private void assertEquals(Cell[] actual, Cell[] expected) {
-    }
-    private void assertEquals(int actual, int expected) {
     }
 
     @Test(expected = FigureNotFoundException.class)
@@ -43,5 +38,11 @@ public class LogicTest {
         Cell[] expected = logic.getFigures()[logic.getIndex()].way(Cell.E3);
         Cell[] actual = {Cell.C1, Cell.D2, Cell.E3};
         assertEquals(actual, expected);
+    }
+
+    private void assertEquals(Cell[] actual, Cell[] expected) {
+    }
+
+    private void assertEquals(int actual, int expected) {
     }
 }

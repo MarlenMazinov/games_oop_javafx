@@ -12,9 +12,6 @@ public final class Logic {
     public void add(Figure figure) {
         figures[index++] = figure;
     }
-    public Figure meth() {
-        return figures[0];
-    }
 
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
