@@ -9,15 +9,13 @@ import ru.job4j.chess.firuges.black.BishopBlack;
 
 public class LogicTest {
 
-    @Test
+    @Test(expected = ImpossibleMoveException.class)
     public void whenReturnIndex()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         Figure bishopBlack = new BishopBlack(Cell.C1);
         logic.add(bishopBlack);
-        int actual = 0;
-        int expected = logic.getIndex();
-        assertEquals(actual, expected);
+        logic.move(Cell.C1, Cell.C6);
     }
 
     @Test(expected = FigureNotFoundException.class)
@@ -28,16 +26,15 @@ public class LogicTest {
         logic.move(Cell.C1, Cell.H6);
     }
 
-    @Test
+    @Test(expected = OccupiedCellException.class)
     public void whenCountCells()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         Figure bishopBlack = new BishopBlack(Cell.C1);
+        Figure bishopBlackTwo = new BishopBlack(Cell.D2);
         logic.add(bishopBlack);
+        logic.add(bishopBlackTwo);
         logic.move(Cell.C1, Cell.E3);
-        Cell[] expected = logic.getFigures()[logic.getIndex()].way(Cell.E3);
-        Cell[] actual = {Cell.C1, Cell.D2, Cell.E3};
-        assertEquals(actual, expected);
     }
 
     private void assertEquals(Cell[] actual, Cell[] expected) {
